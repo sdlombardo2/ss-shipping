@@ -29,8 +29,8 @@ $DOCKER_CMD run --rm -v $HOME/.m2:/root/.m2 -v $CODE_DIR:/usr/src/mymaven -w /us
 cp $CODE_DIR/target/*.jar $CODE_DIR/docker/$(basename $CODE_DIR)
 #cp $CODE_DIR/*.jar $CODE_DIR/$(basename $CODE_DIR)
 
-#for m in ./docker/*/; do
-for m in ./*/; do
+for m in ./docker/*/; do
+#for m in ./*/; do
     REPO=${GROUP}/$(basename $m)
     $DOCKER_CMD build \
       --build-arg BUILD_VERSION=$BUILD_VERSION \
