@@ -1,10 +1,9 @@
 FROM weaveworksdemos/msd-java:jre-latest
 
 WORKDIR /usr/src/app
-RUN ls -l
-COPY *.jar ./app.jar
+COPY *.jar /usr/src/app/app.jar
 
-RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./app.jar
+RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /usr/src/app/app.jar
 
 USER ${SERVICE_USER}
 
@@ -22,4 +21,4 @@ LABEL org.label-schema.vendor="Weaveworks" \
   org.label-schema.vcs-ref="${COMMIT}" \
   org.label-schema.schema-version="1.0"
 
-ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./app.jar", "--port=80"]
+ENTRYPOINT ["/usr/local/bin/java.sh","-jar","/usr/src/app/app.jar", "--port=80"]
