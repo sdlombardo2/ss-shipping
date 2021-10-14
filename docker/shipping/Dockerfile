@@ -1,6 +1,6 @@
 FROM weaveworksdemos/msd-java:jre-latest
 
-RUN addgroup mygroup && adduser -D -G mygroup myuser && mkdir -p /usr/src/app && chown -R myuser /usr/src/app
+RUN mkdir -p /usr/src/app && chown -R myuser /usr/src/app
 
 WORKDIR /usr/src/app
 COPY *.jar /usr/src/app/app.jar
